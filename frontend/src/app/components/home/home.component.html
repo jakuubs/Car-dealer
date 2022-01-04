@@ -1,0 +1,74 @@
+<div class="main-form">
+  <div *ngIf="successAlert" class="alert alert-success alert-dismissible fade show" role="alert" style="margin: 10px 20px">
+    <strong>Success!</strong> You've added some new data.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeSuccessAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="errorAlert" class="alert alert-danger alert-dismissible fade show" role="alert" style="margin: 10px 20px">
+    <strong>Error!</strong> Something went wrong.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeErrorAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <select class="browser-default custom-select" [(ngModel)]="selected">
+    <option *ngFor="let option of options" [value]="option">{{option}}</option>
+  </select>
+
+  <div class="form-group">
+    <div *ngIf="selected==='Brand'">
+      <form [formGroup]="addBrand" (ngSubmit)="onAddBrand()">
+        <input #txt class="form-control" type="text" formControlName="name" placeholder="name" autofocus>
+        <input class="form-control" type="text" formControlName="startDate" placeholder="start date">
+        <input class="form-control" type="text" formControlName ="originCountry" placeholder="origin country">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+    <div  *ngIf="selected==='Model'">
+      <form [formGroup]="addModel" (ngSubmit)="onAddModel()">
+        <input #txt class="form-control" type="text" formControlName="brand" placeholder="brand" autofocus>
+        <input class="form-control" type="text" formControlName="name" placeholder="name">
+        <input class="form-control" type="text" formControlName="releaseDate" placeholder="release date">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+    <div *ngIf="selected==='Car'">
+      <form [formGroup]="addCar" (ngSubmit)="onAddCar()">
+        <input #txt class="form-control" type="text" formControlName="vin" placeholder="vin" autofocus>
+        <input class="form-control" type="text" formControlName="model" placeholder="model">
+        <input class="form-control" type="text" formControlName="mileage" placeholder="mileage">
+        <input class="form-control" type="text" formControlName="enginePower" placeholder="engine power">
+        <input class="form-control" type="text" formControlName="gearbox" placeholder="gearbox">
+        <input class="form-control" type="text" formControlName="fuel" placeholder="fuel">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+    <div *ngIf="selected==='Customer'">
+      <form [formGroup]="addCustomer" (ngSubmit)="onAddCustomer()">
+        <input #txt class="form-control" type="text" formControlName="email" placeholder="e-mail" autofocus>
+        <input class="form-control" type="text" formControlName="phoneNumber" placeholder="phone number">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+    <div  *ngIf="selected==='Details'">
+      <form [formGroup]="addDetails" (ngSubmit)="onAddDetails()">
+        <input #txt class="form-control" type="text" formControlName="customer" placeholder="customer" autofocus>
+        <input class="form-control" type="text" formControlName="firstName" placeholder="first name">
+        <input class="form-control" type="text" formControlName="lastName" placeholder="last name">
+        <input class="form-control" type="text" formControlName="address" placeholder="address">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+    <div  *ngIf="selected==='Sale'">
+      <form [formGroup]="addSale" (ngSubmit)="onAddSale()">
+        <input #txt class="form-control" type="text" formControlName="car" placeholder="car" autofocus>
+        <input class="form-control" type="text" formControlName="customer" placeholder="customer">
+        <input class="form-control" type="text" formControlName="date" placeholder="date">
+        <input class="form-control" type="text" formControlName="price" placeholder="price">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

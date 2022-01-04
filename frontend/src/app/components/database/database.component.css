@@ -1,0 +1,24 @@
+.data-table {
+  position: relative;
+  top: 30px;
+}
+
+table {
+  width: 75%;
+  margin: auto;
+  border: 1px solid darkgray;
+}
+
+select {
+  width: 10%;
+  margin-top:20px;
+  margin-left: 20px;
+}
+
+.paginator {
+  position: fixed;
+  left: 50%;
+  bottom: 140px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+}

@@ -1,0 +1,31 @@
+<div style="margin-top: 25px;">
+    <h3 style="text-align: center;">Additional information about objects from database</h3>
+</div>
+
+<div class="informations">
+    <h5>Brands info - brands by country:</h5>
+    <ul class="bullet">
+        <li *ngFor="let brandInfo of brandsInfo | keyvalue">{{ brandInfo.key }} : {{ brandInfo.value }}</li>
+    </ul>
+
+    <h5>Models info - models by brand:</h5>
+    <ul class="bullet">
+        <li *ngFor="let modelInfo of modelsInfo | keyvalue">{{ modelInfo.key }} : {{ modelInfo.value }}</li>
+    </ul>
+
+    <h5>Cars info - cars by fuel type:</h5>
+    <ul class="bullet">
+        <li *ngFor="let carInfo of carsInfo | keyvalue">{{ carInfo.key }} : {{ carInfo.value }}</li>
+    </ul>
+
+    <h5 *ngFor="let customerInfo of customersInfo | keyvalue">
+        Customers info - number of customers: {{ customerInfo.value }}</h5>
+
+    <h5>Details info - customers by first letter of last name:</h5>
+    <ul class="bullet">
+        <li *ngFor="let detailInfo of detailsInfo | keyvalue">{{ detailInfo.key }} : {{ detailInfo.value }}</li>
+    </ul>
+
+    <h5 *ngFor="let saleInfo of salesInfo | keyvalue">
+        Sales info - total sale income: {{ saleInfo.value }}</h5>
+</div>

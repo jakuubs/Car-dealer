@@ -1,0 +1,205 @@
+<div class="database-elements" xmlns="http://www.w3.org/1999/html">
+  <div class="table-select">
+    <select class="browser-default custom-select" [(ngModel)]="selected">
+      <option *ngFor="let option of options" [value]="option">{{option}}</option>
+    </select>
+
+    <div class="data-table">
+      <div *ngIf="selected==='Brand'">
+        <table class="table table-striped">
+          <thead>
+            <tr class="table-header">
+              <th scope="col">Brand name</th>
+              <th scope="col">Origin country</th>
+              <th scope="col">Date of starting</th>
+              <th scope="col">Edit brand</th>
+              <th scope="col">Delete brand</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let brand of brands | paginate: { id: 'brands_pagination',
+                        itemsPerPage: 5,
+                        currentPage: page,
+                        totalItems: brands.length }">
+              <td>{{brand.name}}</td>
+              <td>{{brand.originCountry}}</td>
+              <td>{{brand.startDate}}</td>
+              <td><a routerLink="/update/brand/{{brand.name}}" class="btn btn-primary" role="button">Edit</a></td>
+              <td><button class="btn btn-danger" type="submit" (click)="onDeleteBrand(brand.name)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="paginator">
+          <pagination-controls id="brands_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+          </pagination-controls>
+        </div>
+      </div>
+
+      <div *ngIf="selected==='Model'">
+        <table class="table table-striped">
+          <thead>
+            <tr class="table-header">
+              <th scope="col">ID</th>
+              <th scope="col">Brand</th>
+              <th scope="col">Name</th>
+              <th scope="col">Release date</th>
+              <th scope="col">Edit model</th>
+              <th scope="col">Delete model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let model of models | paginate: { id: 'models_pagination',
+                      itemsPerPage: 5,
+                      currentPage: page,
+                      totalItems: models.length }">
+              <td>{{model.id}}</td>
+              <td>{{model.brand}}</td>
+              <td>{{model.name}}</td>
+              <td>{{model.releaseDate}}</td>
+              <td><a routerLink="/update/model/{{model.id}}" class="btn btn-primary" role="button">Edit</a></td>
+              <td><button class="btn btn-danger" type="submit" (click)="onDeleteModel(model.id)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="paginator">
+          <pagination-controls id="models_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+          </pagination-controls>
+        </div>
+      </div>
+
+      <div *ngIf="selected==='Car'">
+        <table class="table table-striped">
+          <thead>
+            <tr class="table-header">
+              <th scope="col">VIN</th>
+              <th scope="col">Model ID</th>
+              <th scope="col">Mileage</th>
+              <th scope="col">Engine power</th>
+              <th scope="col">Gearbox</th>
+              <th scope="col">Fuel</th>
+              <th scope="col">Edit car</th>
+              <th scope="col">Delete car</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let car of cars | paginate: { id: 'cars_pagination',
+                          itemsPerPage: 5,
+                          currentPage: page,
+                          totalItems: cars.length }">
+              <td>{{car.vin}}</td>
+              <td>{{car.model}}</td>
+              <td>{{car.mileage}}</td>
+              <td>{{car.enginePower}}</td>
+              <td>{{car.gearbox}}</td>
+              <td>{{car.fuel}}</td>
+              <td><a routerLink="/update/car/{{car.vin}}" class="btn btn-primary" role="button">Edit</a></td>
+              <td><button class="btn btn-danger" type="submit" (click)="onDeleteCar(car.vin)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="paginator">
+          <pagination-controls id="cars_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+          </pagination-controls>
+        </div>
+      </div>
+
+      <div *ngIf="selected==='Customer'">
+        <table class="table table-striped">
+          <thead>
+            <tr class="table-header">
+              <th scope="col">ID</th>
+              <th scope="col">E-mail address</th>
+              <th scope="col">Phone number</th>
+              <th scope="col">Edit customer</th>
+              <th scope="col">Delete customer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let customer of customers | paginate: { id: 'customers_pagination',
+                      itemsPerPage: 5,
+                      currentPage: page,
+                      totalItems: customers.length }">
+              <td>{{customer.id}}</td>
+              <td>{{customer.email}}</td>
+              <td>{{customer.phoneNumber}}</td>
+              <td><a routerLink="/update/customer/{{customer.id}}" class="btn btn-primary" role="button">Edit</a></td>
+              <td><button class="btn btn-danger" type="submit" (click)="onDeleteCustomer(customer.id)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="paginator">
+          <pagination-controls id="customers_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+          </pagination-controls>
+        </div>
+      </div>
+      
+      <div *ngIf="selected==='Details'">
+        <table class="table table-striped">
+          <thead>
+            <tr class="table-header">
+              <th scope="col">ID</th>
+              <th scope="col">First name</th>
+              <th scope="col">Last name</th>
+              <th scope="col">Address</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Edit details</th>
+              <th scope="col">Delete details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detail of details | paginate: { id: 'details_pagination',
+                      itemsPerPage: 5,
+                      currentPage: page,
+                      totalItems: details.length }">
+              <td>{{detail.id}}</td>
+              <td>{{detail.firstName}}</td>
+              <td>{{detail.lastName}}</td>
+              <td>{{detail.address}}</td>
+              <td>{{detail.customer}}</td>
+              <td><a routerLink="/update/details/{{detail.id}}" class="btn btn-primary" role="button">Edit</a></td>
+              <td><button class="btn btn-danger" type="submit" (click)="onDeleteDetails(detail.id)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="paginator">
+          <pagination-controls id="details_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+          </pagination-controls>
+        </div>
+      </div>
+
+      <div *ngIf="selected==='Sales'">
+        <table class="table table-striped">
+          <thead>
+            <tr class="table-header">
+              <th scope="col">ID</th>
+              <th scope="col">Car</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Price</th>
+              <th scope="col">Date</th>
+              <th scope="col">Edit sale</th>
+              <th scope="col">Delete sale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sale of sales | paginate: { id: 'sales_pagination',
+                      itemsPerPage: 5,
+                      currentPage: page,
+                      totalItems: sales.length }">
+              <td>{{sale.id}}</td>
+              <td>{{sale.car}}</td>
+              <td>{{sale.customer}}</td>
+              <td>{{sale.price}}</td>
+              <td>{{sale.date}}</td>
+              <td><a routerLink="/update/sale/{{sale.id}}" class="btn btn-primary" role="button">Edit</a></td>
+              <td><button class="btn btn-danger" type="submit" (click)="onDeleteSale(sale.id)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="paginator">
+          <pagination-controls id="sales_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+          </pagination-controls>
+        </div>    
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.informations {
+    position: relative;
+    left: 30px;
+}
+
+.bullet li {
+    display: block;
+}
+
+.bullet li:before
+{
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    font-size: 11px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+    color: #007bff;
+}

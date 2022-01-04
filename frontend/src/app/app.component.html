@@ -1,0 +1,18 @@
+<div class="header">
+  <h1 style="text-align: center; margin: 30px;">Car dealer database</h1>
+</div>
+
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a routerLink="/" class="tab" ngbNavLink>Home</a>
+  </li>
+  <li [ngbNavItem]="2">
+    <a routerLink="/database" class="tab" ngbNavLink>Database</a>
+  </li>
+  <li [ngbNavItem]="3">
+    <a routerLink="/info" class="tab" ngbNavLink>Info</a>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+<router-outlet></router-outlet>

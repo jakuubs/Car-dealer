@@ -1,0 +1,74 @@
+<h3 style="text-align: center; margin: 30px;">Update data</h3>
+
+<div *ngIf="successAlert" class="alert alert-success alert-dismissible fade show" role="alert" style="margin: 10px 20px">
+    <strong>Success!</strong> You've added some new data.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeSuccessAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="errorAlert" class="alert alert-danger alert-dismissible fade show" role="alert" style="margin: 10px 20px">
+    <strong>Error!</strong> Something went wrong.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeErrorAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+<div class="form-group">
+    <div *ngIf="router.url.includes('brand')">
+      <form [formGroup]="updateBrand" (ngSubmit)="onUpdateBrand()">
+        <input class="form-control" type="text" formControlName="name" readonly>
+        <input class="form-control" type="text" formControlName="startDate" placeholder="start date">
+        <input class="form-control" type="text" formControlName ="originCountry" placeholder="origin country">
+        <button class="btn btn-primary" type="submit">Update</button>
+      </form>
+    </div>
+    <div *ngIf="router.url.includes('model')">
+      <form [formGroup]="updateModel" (ngSubmit)="onUpdateModel()">
+        <input class="form-control" type="text" formControlName="id" readonly>
+        <input class="form-control" type="text" formControlName="brand" readonly>
+        <input class="form-control" type="text" formControlName="name" placeholder="name">
+        <input class="form-control" type="text" formControlName="releaseDate" placeholder="release date">
+        <button class="btn btn-primary" type="submit">Update</button>
+      </form>
+    </div>
+    <div *ngIf="router.url.includes('car')">
+      <form [formGroup]="updateCar" (ngSubmit)="onUpdateCar()">
+        <input class="form-control" type="text" formControlName="vin" readonly>
+        <input class="form-control" type="text" formControlName="model" placeholder="model" readonly>
+        <input class="form-control" type="text" formControlName="mileage" placeholder="mileage">
+        <input class="form-control" type="text" formControlName="enginePower" placeholder="engine power">
+        <input class="form-control" type="text" formControlName="gearbox" placeholder="gearbox">
+        <input class="form-control" type="text" formControlName="fuel" placeholder="fuel">
+        <button class="btn btn-primary" type="submit">Update</button>
+      </form>
+    </div>
+    <div *ngIf="router.url.includes('customer')">
+      <form [formGroup]="updateCustomer" (ngSubmit)="onUpdateCustomer()">
+        <input class="form-control" type="text" formControlName="id" readonly>
+        <input class="form-control" type="text" formControlName="email" placeholder="e-mail">
+        <input class="form-control" type="text" formControlName="phoneNumber" placeholder="phone number">
+        <button class="btn btn-primary" type="submit">Update</button>
+      </form>
+    </div>
+    <div  *ngIf="router.url.includes('details')">
+      <form [formGroup]="updateDetails" (ngSubmit)="onUpdateDetails()">
+        <input class="form-control" type="text" formControlName="id" readonly>
+        <input class="form-control" type="text" formControlName="customer" readonly>
+        <input class="form-control" type="text" formControlName="firstName" placeholder="first name">
+        <input class="form-control" type="text" formControlName="lastName" placeholder="last name">
+        <input class="form-control" type="text" formControlName="address" placeholder="address">
+        <button class="btn btn-primary" type="submit">Update</button>
+      </form>
+    </div>
+    <div  *ngIf="router.url.includes('sale')">
+      <form [formGroup]="updateSale" (ngSubmit)="onUpdateSale()">
+        <input class="form-control" type="text" formControlName="id" readonly>
+        <input class="form-control" type="text" formControlName="car" placeholder="car">
+        <input class="form-control" type="text" formControlName="customer" placeholder="customer">
+        <input class="form-control" type="text" formControlName="date" placeholder="date">
+        <input class="form-control" type="text" formControlName="price" placeholder="price">
+        <button class="btn btn-primary" type="submit">Update</button>
+      </form>
+    </div>
+  </div>
